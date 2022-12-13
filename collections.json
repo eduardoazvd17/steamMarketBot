@@ -9,7 +9,7 @@
             ],
             "maxPrice": 0.43,
             "maxFloat": 0.24999,
-            "enabled": false
+            "enabled": true
         },
         {
             "name": "Bank (MW)",

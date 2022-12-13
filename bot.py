@@ -24,17 +24,19 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
-def buy_log(item_name, item_float, item_price):
+def buy_log(current_collection, item_name, item_float, item_price):
+    logFilePath = os.path.normpath("logs\\" + current_collection["name"] + ".log")
     logMessage = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
     
     # Check if log already added
-    with open('history.log') as f:
-        if logMessage in f.read():
-            return
+    if os.path.isfile(logFilePath):
+        with open(logFilePath) as f:
+            if logMessage in f.read():
+                return
 
     logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
-    file_handler = logging.FileHandler("history.log", mode='a')
+    file_handler = logging.FileHandler(logFilePath, mode='a')
     file_handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
     file_handler.setFormatter(formatter)
@@ -133,7 +135,7 @@ def check_whole_page(current_collection):
             
             if buyResult:
                 # Save log to file
-                buy_log(item_name, item_float, price_text_num[idx])
+                buy_log(current_collection, item_name, item_float, price_text_num[idx])
 
         # Search for next page
         if not find_next_page() or max_price_reached:
