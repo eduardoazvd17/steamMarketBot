@@ -56,9 +56,10 @@ def buy_skin(buy_button):
         driver.execute_script("arguments[0].click();", close_button)
 
         time.sleep(5)
+        return True
     except NoSuchElementException:
         print("Erro ao comprar essa skin, pulando para a proxima.")
-        return
+        return False
 
 def find_next_page():
     try:
@@ -128,10 +129,11 @@ def check_whole_page(current_collection):
                 continue
 
             # Buy skin
-            buy_skin(buy_now[idx])
-
-            # Save information to file
-            buy_log(item_name, item_float, price_text_num[idx])
+            buyResult = buy_skin(buy_now[idx])
+            
+            if buyResult:
+                # Save log to file
+                buy_log(item_name, item_float, price_text_num[idx])
 
         # Search for next page
         if not find_next_page() or max_price_reached:
@@ -181,10 +183,11 @@ except FileNotFoundError:
 count = 0
 while True:
     for collection in collections['collections']:
-        count = 0
-        cls()
-        for url in collection['urls']:
-            count += 1
-            print("Carregando {}a URL da colecao {}...".format(count, collection['name']))
-            driver.get(url)
-            check_whole_page(collection)
+        if collection['enabled']:
+            count = 0
+            cls()
+            for url in collection['urls']:
+                count += 1
+                print("Carregando {}a URL da colecao {}...".format(count, collection['name']))
+                driver.get(url)
+                check_whole_page(collection)
