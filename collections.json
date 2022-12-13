@@ -1,0 +1,25 @@
+{
+    "collections": [
+        {
+            "name": "Inferno 2018 (FT)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/R8%20Revolver%20%7C%20Nitro%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Calf%20Skin%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/PP-Bizon%20%7C%20Candy%20Apple%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.43,
+            "maxFloat": 0.24999
+        },
+        {
+            "name": "Bank (MW)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/G3SG1%20%7C%20Green%20Apple%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Death%20Rattle%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/Nova%20%7C%20Caged%20Steel%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/UMP-45%20%7C%20Carbon%20Fiber%20%28Minimal%20Wear%29"
+            ],
+            "maxPrice": 0.89,
+            "maxFloat": 0.08499
+        }
+    ]
+}
