@@ -27,12 +27,12 @@ def check_user_balance():
 def buy_log(item_name, item_float, item_pattern, item_price):
     logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
-    file_handler = logging.FileHandler("purchaseHistory.log", mode='a')
+    file_handler = logging.FileHandler("history.log", mode='a')
     file_handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s%(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S%p %Z')
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
-    logger.info("Item name: {} , Float: {} , Pattern: {} , Price: {}".format(item_name, item_float, item_pattern, item_price))
+    logger.info("Item: {}, Float: {}, Price: {}".format(item_name, item_float, item_price))
 
 def buy_skin(buy_button):
     # Buy now button
