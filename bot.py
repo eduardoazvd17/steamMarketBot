@@ -24,15 +24,22 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
-def buy_log(item_name, item_float, item_pattern, item_price):
-    logger = logging.getLogger('BUYLOGGER')
+def buy_log(item_name, item_float, item_price):
+    logMessage = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
+    
+    # Check if log already added
+    with open('history.log') as f:
+    if logMessage in f.read():
+        return
+
+    logger = logging.getLogger('BuyLog')
     logger.setLevel(logging.INFO)
     file_handler = logging.FileHandler("history.log", mode='a')
     file_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(name)s%(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S%p %Z')
+    formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
-    logger.info("Item: {}, Float: {}, Price: {}".format(item_name, item_float, item_price))
+    logger.info(logMessage)
 
 def buy_skin(buy_button):
     # Buy now button
@@ -48,7 +55,6 @@ def buy_skin(buy_button):
         close_button = driver.find_element("id", "market_buynow_dialog_close")
         driver.execute_script("arguments[0].click();", close_button)
 
-        print("Compra concluida com sucesso!")
         time.sleep(5)
     except NoSuchElementException:
         print("Erro ao comprar essa skin, pulando para a proxima.")
@@ -118,14 +124,14 @@ def check_whole_page(current_collection):
                 continue
 
             # Check if float and pattern match with user input
-            if check_item_parameters(item_float, item_pattern, whole_json, current_collection['maxFloat']) is False:
+            if check_item_parameters(item_float, whole_json, current_collection['maxFloat']) is False:
                 continue
 
             # Buy skin
             buy_skin(buy_now[idx])
 
             # Save information to file
-            buy_log(item_name, item_float, item_pattern, price_text_num[idx])
+            buy_log(item_name, item_float, price_text_num[idx])
 
         # Search for next page
         if not find_next_page() or max_price_reached:
@@ -144,7 +150,7 @@ def save_json_response(button):
     json_response_pattern = int(json_response["iteminfo"]["paintseed"])
     return json_response_name, json_response_float, json_response_pattern, json_response
 
-def check_item_parameters(item_float, item_pattern, whole, maxFloat):
+def check_item_parameters(item_float, whole, maxFloat):
     if item_float > float(maxFloat):
         return False
     return True
@@ -158,7 +164,7 @@ def check_max_price(order, price, maxPrice):
 driver.get("https://steamcommunity.com/login/home/?goto=market%2Flistings%2F730")
 print("Efetue login na steam.")
 input("Aperte enter para continuar:")
-speed = 60
+speed = 15
 cls()
 
 # Reading URLs
@@ -176,9 +182,9 @@ count = 0
 while True:
     for collection in collections['collections']:
         count = 0
+        cls()
         for url in collection['urls']:
             count += 1
-            print("Carregando URL {} da colecao {}...".format(count, collection['name']))
+            print("Carregando {}a URL da colecao {}...".format(count, collection['name']))
             driver.get(url)
             check_whole_page(collection)
-            cls()

@@ -20,6 +20,72 @@
             ],
             "maxPrice": 0.89,
             "maxFloat": 0.08499
+        },
+        {
+            "name": "Dreams & Nightmares (FT)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/P2000%20%7C%20Lifted%20Spirits%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Five-SeveN%20%7C%20Scrawl%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MP5-SD%20%7C%20Necro%20Jr.%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Ensnared%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Poultrygeist%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAG-7%20%7C%20Foresight%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Sawed-Off%20%7C%20Spirit%20Board%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.38,
+            "maxFloat": 0.19
+        },
+        {
+            "name": "CS20 (FT)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/MAG-7%20%7C%20Popdog%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Classic%20Crate%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Tec-9%20%7C%20Flash%20Out%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Assault%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Dual%20Berettas%20%7C%20Elite%201.6%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/FAMAS%20%7C%20Decommissioned%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Sacrifice%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.38,
+            "maxFloat": 0.18
+        },
+        {
+            "name": "Chroma Case (FT)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/XM1014%20%7C%20Quicksilver%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/M249%20%7C%20System%20Lock%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Grotto%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MP9%20%7C%20Deadly%20Poison%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Catacombs%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.66,
+            "maxFloat": 0.2990
+        },
+        {
+            "name": "Spectrum Case (MW)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/P250%20%7C%20Ripple%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/MP7%20%7C%20Akoben%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/PP-Bizon%20%7C%20Jungle%20Slipstream%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/Sawed-Off%20%7C%20Zander%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/Five-SeveN%20%7C%20Capillary%20%28Minimal%20Wear%29",
+                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Blueprint%20%28Minimal%20Wear%29"
+            ],
+            "maxPrice": 0.84,
+            "maxFloat": 0.127
+        },
+        {
+            "name": "Shadow Case (FT)",
+            "urls": [
+                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Green%20Marine%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/XM1014%20%7C%20Scumbria%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Wraiths%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAG-7%20%7C%20Cobalt%20Core%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Rangeen%20%28Field-Tested%29",
+                "https://steamcommunity.com/market/listings/730/FAMAS%20%7C%20Survivor%20Z%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.67,
+            "maxFloat": 0.1656
         }
     ]
 }
