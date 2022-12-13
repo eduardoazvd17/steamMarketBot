@@ -19,12 +19,10 @@ driver = webdriver.Chrome(options=chrome_options)
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
 def check_user_balance():
     user_balance = driver.find_element("id", "header_wallet_balance")
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
-
 
 def buy_log(item_name, item_float, item_pattern, item_price):
     logger = logging.getLogger('BUYLOGGER')
@@ -77,7 +75,6 @@ def load_purchase_buttons():
     except NoSuchElementException:
         print("Erro ao carregar pagina de compra, tentando novamente...")
         return
-
 
 def check_whole_page(current_collection):
     max_price_reached = False
@@ -134,7 +131,6 @@ def check_whole_page(current_collection):
         if not find_next_page() or max_price_reached:
             break
 
-
 def save_json_response(button):
     driver.execute_script("arguments[0].click();", button)
     popup = driver.find_element("css selector", "#market_action_popup_itemactions > a")
@@ -148,7 +144,6 @@ def save_json_response(button):
     json_response_pattern = int(json_response["iteminfo"]["paintseed"])
     return json_response_name, json_response_float, json_response_pattern, json_response
 
-
 def check_item_parameters(item_float, item_pattern, whole, maxFloat):
     if item_float > float(maxFloat):
         return False
@@ -158,7 +153,6 @@ def check_max_price(order, price, maxPrice):
     if float(maxPrice) >= float(price[order]):
         return True
     return False
-
 
 # Login page load
 driver.get("https://steamcommunity.com/login/home/?goto=market%2Flistings%2F730")
