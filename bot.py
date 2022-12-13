@@ -29,10 +29,10 @@ def buy_log(item_name, item_float, item_price):
     
     # Check if log already added
     with open('history.log') as f:
-    if logMessage in f.read():
-        return
+        if logMessage in f.read():
+            return
 
-    logger = logging.getLogger('BuyLog')
+    logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
     file_handler = logging.FileHandler("history.log", mode='a')
     file_handler.setLevel(logging.INFO)
