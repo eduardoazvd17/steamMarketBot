@@ -16,7 +16,6 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(options=chrome_options)
 
-last_bought_item = ''
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -26,20 +25,21 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
+last_item_log_message = ''
 def buy_log(current_collection, item_name, item_float, item_price):
-    logFilePath = os.path.normpath("logs\\" + current_collection["name"] + ".log")
-    logMessage = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
+    log_file_path = os.path.normpath("logs\\" + current_collection["name"] + ".log")
+    log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
     # Check if log is from new item
-    if last_bought_item != logMessage:
-        last_bought_item = logMessage
+    if last_item_log_message != log_message:
+        last_item_log_message = log_message
         logger = logging.getLogger('BUYLOGGER')
         logger.setLevel(logging.INFO)
-        file_handler = logging.FileHandler(logFilePath, mode='a')
+        file_handler = logging.FileHandler(log_file_path, mode='a')
         file_handler.setLevel(logging.INFO)
         formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
-        logger.info(logMessage)
+        logger.info(log_message)
 
 def buy_skin(buy_button):
     # Buy now button
