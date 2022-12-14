@@ -16,7 +16,6 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(options=chrome_options)
 
-
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -25,14 +24,12 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
-last_item_log_message = ''
-def buy_log(current_collection, item_name, item_float, item_price):
+def buy_log(current_collection, item_name, item_float, item_price, last_item_log_message):
     log_file_path = os.path.normpath("logs\\" + current_collection["name"] + ".log")
     log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
     
     # Check if log is from new item
     if last_item_log_message != log_message:
-        last_item_log_message = log_message
         logger = logging.getLogger('BUYLOGGER')
         logger.setLevel(logging.INFO)
         file_handler = logging.FileHandler(log_file_path, mode='a')
@@ -41,6 +38,8 @@ def buy_log(current_collection, item_name, item_float, item_price):
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
         logger.info(log_message)
+        
+    return log_message
 
 def buy_skin(buy_button):
     # Buy now button
@@ -85,6 +84,7 @@ def load_purchase_buttons():
         return
 
 def check_whole_page(current_collection):
+    last_item_log_message = ''
     max_price_reached = False
     while True:
         try:
@@ -134,7 +134,7 @@ def check_whole_page(current_collection):
             
             if buyResult:
                 # Save log to file
-                buy_log(current_collection, item_name, item_float, price_text_num[idx])
+                last_item_log_message = buy_log(current_collection, item_name, item_float, price_text_num[idx], last_item_log_message)
 
         # Search for next page
         if not find_next_page() or max_price_reached:
