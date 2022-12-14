@@ -29,6 +29,7 @@ last_item_log_message = ''
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = os.path.normpath("logs\\" + current_collection["name"] + ".log")
     log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
+    
     # Check if log is from new item
     if last_item_log_message != log_message:
         last_item_log_message = log_message
