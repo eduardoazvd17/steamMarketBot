@@ -26,13 +26,13 @@ def check_user_balance():
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = os.path.normpath("logs/" + current_collection["name"] + ".log")
-    log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
+    log_message = "| Item: {} | Float: {} | Price: {} |".format(item_name, item_float, item_price)
     
     logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
     file_handler = logging.FileHandler(log_file_path, mode='a')
     file_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
+    formatter = logging.Formatter('%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
     file_handler.setFormatter(formatter)
     if not logger.handlers:
         logger.addHandler(file_handler)
