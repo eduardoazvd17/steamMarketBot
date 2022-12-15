@@ -24,22 +24,19 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
-def buy_log(current_collection, item_name, item_float, item_price, last_item_log_message):
-    log_file_path = os.path.normpath("logs\\" + current_collection["name"] + ".log")
+def buy_log(current_collection, item_name, item_float, item_price):
+    log_file_path = os.path.normpath("logs/" + current_collection["name"] + ".log")
     log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
     
-    # Check if log is from new item
-    if last_item_log_message != log_message:
-        logger = logging.getLogger('BUYLOGGER')
-        logger.setLevel(logging.INFO)
-        file_handler = logging.FileHandler(log_file_path, mode='a')
-        file_handler.setLevel(logging.INFO)
-        formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
-        file_handler.setFormatter(formatter)
-        logger.addHandler(file_handler)
-        logger.info(log_message)
-        
-    return log_message
+    logger = logging.getLogger('BUYLOGGER')
+    logger.setLevel(logging.INFO)
+    file_handler = logging.FileHandler(log_file_path, mode='a')
+    file_handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
+    file_handler.setFormatter(formatter)
+    if not logger.handlers:
+        logger.addHandler(handler)
+    logger.info(log_message)
 
 def buy_skin(buy_button):
     # Buy now button
@@ -56,10 +53,8 @@ def buy_skin(buy_button):
         driver.execute_script("arguments[0].click();", close_button)
 
         time.sleep(5)
-        return True
     except NoSuchElementException:
         print("Erro ao comprar essa skin, pulando para a proxima.")
-        return False
 
 def find_next_page():
     try:
@@ -129,12 +124,9 @@ def check_whole_page(current_collection):
             if check_item_parameters(item_float, whole_json, current_collection['maxFloat']) is False:
                 continue
 
-            # Buy skin
-            buyResult = buy_skin(buy_now[idx])
-            
-            if buyResult:
-                # Save log to file
-                last_item_log_message = buy_log(current_collection, item_name, item_float, price_text_num[idx], last_item_log_message)
+            # Buy skin & save log
+            buy_skin(buy_now[idx])
+            buy_log(current_collection, item_name, item_float, price_text_num[idx])
 
         # Search for next page
         if not find_next_page() or max_price_reached:
