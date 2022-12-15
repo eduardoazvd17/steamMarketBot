@@ -26,7 +26,7 @@ def check_user_balance():
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = os.path.normpath("logs/" + current_collection["name"] + ".log")
-    log_message = "{}, Float: {}, Price: {}".format(item_name, item_float, item_price)
+    log_message = "{} - {}, Float: {}, Price: {}".format(current_collection["name"], item_name, item_float, item_price)
     
     logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
