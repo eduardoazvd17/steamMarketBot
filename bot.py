@@ -35,7 +35,7 @@ def buy_log(current_collection, item_name, item_float, item_price):
     formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
     file_handler.setFormatter(formatter)
     if not logger.handlers:
-        logger.addHandler(handler)
+        logger.addHandler(file_handler)
     logger.info(log_message)
 
 def buy_skin(buy_button):
