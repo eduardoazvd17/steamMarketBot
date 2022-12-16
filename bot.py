@@ -159,7 +159,7 @@ def check_max_price(order, price, maxPrice):
 driver.get("https://steamcommunity.com/login/home/?goto=market%2Flistings%2F730")
 print("Efetue login na steam.")
 input("Aperte enter para continuar:")
-speed = 15
+speed = 1
 cls()
 
 # Reading URLs
