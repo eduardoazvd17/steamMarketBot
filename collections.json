@@ -93,6 +93,33 @@
             "maxPrice": 0.38,
             "maxFloat": 0.19,
             "enabled": true
+        },
+        {
+            "name": "Danger Zone (FT)",
+            "urls": [
+               "https://steamcommunity.com/market/listings/730/SG%20553%20%7C%20Danger%20Close%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/Nova%20%7C%20Wood%20Fired%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/MP9%20%7C%20Modest%20Threat%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/Sawed-Off%20%7C%20Black%20Sand%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/Tec-9%20%7C%20Fubar%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Oxide%20Blaze%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/M4A4%20%7C%20Magnesium%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.36,
+            "maxFloat": 0.1663,
+            "enabled": true
+        },
+        {
+            "name": "Danger Zone (FT StatTrak)",
+            "urls": [
+               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20SG%20553%20%7C%20Danger%20Close%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20Sawed-Off%20%7C%20Black%20Sand%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20Nova%20%7C%20Wood%20Fired%20%28Field-Tested%29",
+               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20MP9%20%7C%20Modest%20Threat%20%28Field-Tested%29"
+            ],
+            "maxPrice": 0.68,
+            "maxFloat": 0.1663,
+            "enabled": true
         }
     ]
 }
