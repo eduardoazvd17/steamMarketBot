@@ -37,9 +37,9 @@ def count_itens_by_collection(collection):
         split_result = line.split("<>")
         date_str = str(split_result[0].strip())
         collection_name = str(split_result[1].strip().replace("Collection: ", ""))
-        item_name = str(split_result[1].strip().replace("Item: ", ""))
-        item_float = float(split_result[2].strip().replace("Float: ", ""))
-        item_price = float(split_result[3].strip().replace("Price: ", ""))
+        item_name = str(split_result[2].strip().replace("Item: ", ""))
+        item_float = float(split_result[3].strip().replace("Float: ", ""))
+        item_price = float(split_result[4].strip().replace("Price: ", ""))
         if (collection_name == collection["name"]):
             count += 1
             
