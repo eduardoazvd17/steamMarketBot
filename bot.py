@@ -34,6 +34,7 @@ def buy_log(current_collection, item_name, item_float, item_price):
     file_handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S%p')
     file_handler.setFormatter(formatter)
+    logger.handlers.clear()
     if not logger.handlers:
         logger.addHandler(file_handler)
     logger.info(log_message)
