@@ -24,12 +24,33 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
+def count_itens_by_collection(collection):
+    count = 0
+    
+    log_file_path = "purchased_itens.log"
+    if not os.path.isfile(log_file_path):
+        return 0
+    
+    log_file = open(log_file_path, "r")
+    log_file_lines = log_file.readlines()
+    for line in log_file_lines:
+        split_result = line.split("<>")
+        date_str = str(split_result[0].strip())
+        collection_name = str(split_result[1].strip().replace("Collection: ", ""))
+        item_name = str(split_result[1].strip().replace("Item: ", ""))
+        item_float = float(split_result[2].strip().replace("Float: ", ""))
+        item_price = float(split_result[3].strip().replace("Price: ", ""))
+        if (collection_name == collection["name"]):
+            count += 1
+            
+    return count
+
 def buy_log(current_collection, item_name, item_float, item_price):
-    log_file_path = "logs/" + current_collection["name"] + ".log"
+    log_file_path = "purchased_itens.log"
     if not os.path.isfile(log_file_path):
         open(log_file_path, "w")
     
-    log_message = "| Item: {} | Float: {} | Price: {} |".format(item_name, item_float, item_price)
+    log_message = "<> Collection: {} <> Item: {} <> Float: {} <> Price: {} <>".format(current_collection["name"], item_name, item_float, item_price)
     
     logger = logging.getLogger('BUYLOGGER')
     logger.setLevel(logging.INFO)
@@ -131,6 +152,7 @@ def check_whole_page(current_collection):
             # Buy skin & save log
             buy_skin(buy_now[idx])
             buy_log(current_collection, item_name, item_float, price_text_num[idx])
+            print("Itens comprados nessa colecao: " + count_itens_by_collection(current_collection))
 
         # Search for next page
         if not find_next_page() or max_price_reached:
