@@ -39,19 +39,6 @@
             "enabled": true
         },
         {
-            "name": "Chroma Case (FT)",
-            "urls": [
-                "https://steamcommunity.com/market/listings/730/XM1014%20%7C%20Quicksilver%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/M249%20%7C%20System%20Lock%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Grotto%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MP9%20%7C%20Deadly%20Poison%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Catacombs%20%28Field-Tested%29"
-            ],
-            "maxPrice": 0.66,
-            "maxFloat": 0.2990,
-            "enabled": true
-        },
-        {
             "name": "Spectrum Case (MW)",
             "urls": [
                 "https://steamcommunity.com/market/listings/730/P250%20%7C%20Ripple%20%28Minimal%20Wear%29",
@@ -66,35 +53,6 @@
             "enabled": true
         },
         {
-            "name": "Shadow Case (FT)",
-            "urls": [
-                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Green%20Marine%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/XM1014%20%7C%20Scumbria%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Wraiths%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MAG-7%20%7C%20Cobalt%20Core%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Rangeen%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/FAMAS%20%7C%20Survivor%20Z%20%28Field-Tested%29"
-            ],
-            "maxPrice": 0.67,
-            "maxFloat": 0.1656,
-            "enabled": true
-        },
-        {
-            "name": "Dreams & Nightmares (FT)",
-            "urls": [
-                "https://steamcommunity.com/market/listings/730/P2000%20%7C%20Lifted%20Spirits%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/Five-SeveN%20%7C%20Scrawl%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MP5-SD%20%7C%20Necro%20Jr.%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MAC-10%20%7C%20Ensnared%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/SCAR-20%20%7C%20Poultrygeist%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/MAG-7%20%7C%20Foresight%20%28Field-Tested%29",
-                "https://steamcommunity.com/market/listings/730/Sawed-Off%20%7C%20Spirit%20Board%20%28Field-Tested%29"
-            ],
-            "maxPrice": 0.38,
-            "maxFloat": 0.19,
-            "enabled": true
-        },
-        {
             "name": "Danger Zone (FT)",
             "urls": [
                "https://steamcommunity.com/market/listings/730/SG%20553%20%7C%20Danger%20Close%20%28Field-Tested%29",
@@ -106,18 +64,6 @@
                "https://steamcommunity.com/market/listings/730/M4A4%20%7C%20Magnesium%20%28Field-Tested%29"
             ],
             "maxPrice": 0.36,
-            "maxFloat": 0.1663,
-            "enabled": true
-        },
-        {
-            "name": "Danger Zone (FT StatTrak)",
-            "urls": [
-               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20SG%20553%20%7C%20Danger%20Close%20%28Field-Tested%29",
-               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20Sawed-Off%20%7C%20Black%20Sand%20%28Field-Tested%29",
-               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20Nova%20%7C%20Wood%20Fired%20%28Field-Tested%29",
-               "https://steamcommunity.com/market/listings/730/StatTrak%E2%84%A2%20MP9%20%7C%20Modest%20Threat%20%28Field-Tested%29"
-            ],
-            "maxPrice": 0.68,
             "maxFloat": 0.1663,
             "enabled": true
         }

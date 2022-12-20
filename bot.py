@@ -25,7 +25,7 @@ def check_user_balance():
     return user_balance_edit
 
 def buy_log(current_collection, item_name, item_float, item_price):
-    log_file_path = os.path.normpath("logs/" + current_collection["name"] + ".log")
+    log_file_path = "logs/" + current_collection["name"] + ".log"
     log_message = "| Item: {} | Float: {} | Price: {} |".format(item_name, item_float, item_price)
     
     logger = logging.getLogger('BUYLOGGER')
@@ -159,7 +159,7 @@ def check_max_price(order, price, maxPrice):
 driver.get("https://steamcommunity.com/login/home/?goto=market%2Flistings%2F730")
 print("Efetue login na steam.")
 input("Aperte enter para continuar:")
-speed = 1
+speed = 15
 cls()
 
 # Reading URLs
