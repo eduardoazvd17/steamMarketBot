@@ -28,20 +28,18 @@ def count_itens_by_collection(collection):
     count = 0
     
     log_file_path = "purchased_itens.log"
-    if not os.path.isfile(log_file_path):
-        return 0
-    
-    log_file = open(log_file_path, "r")
-    log_file_lines = log_file.readlines()
-    for line in log_file_lines:
-        split_result = line.split("<>")
-        date_str = str(split_result[0].strip())
-        collection_name = str(split_result[1].strip().replace("Collection: ", ""))
-        item_name = str(split_result[2].strip().replace("Item: ", ""))
-        item_float = float(split_result[3].strip().replace("Float: ", ""))
-        item_price = float(split_result[4].strip().replace("Price: ", ""))
-        if (collection_name == collection["name"]):
-            count += 1
+    if os.path.isfile(log_file_path):
+        log_file = open(log_file_path, "r")
+        log_file_lines = log_file.readlines()
+        for line in log_file_lines:
+            split_result = line.split("<>")
+            date_str = str(split_result[0].strip())
+            collection_name = str(split_result[1].strip().replace("Collection: ", ""))
+            item_name = str(split_result[2].strip().replace("Item: ", ""))
+            item_float = float(split_result[3].strip().replace("Float: ", ""))
+            item_price = float(split_result[4].strip().replace("Price: ", ""))
+            if (collection_name == collection["name"]):
+                count += 1
             
     return str(count)
 
