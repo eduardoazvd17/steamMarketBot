@@ -43,7 +43,7 @@ def count_itens_by_collection(collection):
         if (collection_name == collection["name"]):
             count += 1
             
-    return count
+    return str(count)
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = "purchased_itens.log"
