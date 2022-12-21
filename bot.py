@@ -30,45 +30,49 @@ def get_possible_price_and_float(collection):
     
     log_file_path = "purchased_itens.log"
     if os.path.isfile(log_file_path):
-        filtered_log_file = []
         log_file = open(log_file_path, "r")
         log_file_lines = log_file.readlines()
         
+        # Filter log file by collection
+        filtered_log_file = []
         for line in log_file_lines:
             split_result = line.split("<>")
             collection_name = str(split_result[1].strip().replace("Collection: ", ""))
             if (collection_name == collection["name"]):
-                filtered_log_file.append(line)
-                
+                filtered_log_file.append(line.replace("\n", ""))
         filtered_log_file_size = len(filtered_log_file)
+             
         if filtered_log_file_size > 0:
+            # Get last contract itens
             current_contract_purchased_itens = filtered_log_file_size % 10
             first_index = filtered_log_file_size - current_contract_purchased_itens
             current_contract_itens = filtered_log_file[first_index:filtered_log_file_size]
-            
             float_sum = float(0)
             price_sum = float(0)
+            
             for line in current_contract_itens:
                 split_result = line.split("<>")
                 float_sum += float(split_result[3].strip().replace("Float: ", ""))
                 price_sum += float(split_result[4].strip().replace("Price: ", ""))
-            
             current_contract_itens_size = len(current_contract_itens)    
+            
+            # AVG
             avg_float = float_sum / current_contract_itens_size
             avg_price = price_sum / current_contract_itens_size
-            
+            # Diff
             diff_float = max_float - avg_float
             diff_price = max_price - avg_price
-            
+            # Max margin
             possible_max_float = max_float + diff_float
             possible_max_price = max_price + diff_price
             
+            print("Colecao: " + str(collection['name']) + " - Total itens: " + str(filtered_log_file_size) + " - Itens contrato atual: " + str(current_contract_itens_size))
             print("Float AVG: " + str(avg_float) + " - Max: " + str(max_float) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_float))
             print("Preco AVG: " + str(avg_price) + " - Max: " + str(max_price) + " - Diff: " + str(diff_price) + " - Margem max atual: " + str(possible_max_price))
             
-            return [possible_max_price, possible_max_float, filtered_log_file_size]
+            return [possible_max_price, possible_max_float]
 
-    return [max_price, max_float, 0]
+    return [max_price, max_float]
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = "purchased_itens.log"
@@ -180,7 +184,6 @@ def check_whole_page(current_collection):
             # Buy skin & save log
             buy_skin(buy_now[idx])
             buy_log(current_collection, item_name, item_float, price_text_num[idx])
-            print("Total de itens comprados desta colecao: " + str(max_price_and_float[2] + 1))
 
         # Search for next page
         if not find_next_page() or max_price_reached:
