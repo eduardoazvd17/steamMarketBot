@@ -66,7 +66,7 @@ def get_possible_price_and_float(collection):
             print("Float AVG: " + str(avg_float) + " - Max: " + str(max_float) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_float))
             print("Preco AVG: " + str(avg_price) + " - Max: " + str(max_price) + " - Diff: " + str(diff_price) + " - Margem max atual: " + str(possible_max_price))
             
-            return [possible_max_price, possible_max_float, filtered_log_file.count()]
+            return [possible_max_price, possible_max_float, filtered_log_file_size]
 
     return [max_price, max_float, 0]
 
