@@ -54,9 +54,9 @@ def get_possible_price_and_float(collection):
             avg_price = price_sum / current_contract_itens.count()
             diff_float = max_float - avg_float
             diff_price = max_price - avg_price
-            return [max_price + diff_price, max_float + diff_float]
+            return [max_price + diff_price, max_float + diff_float, filtered_log_file.count()]
 
-    return [max_price, max_float]
+    return [max_price, max_float, 0]
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = "purchased_itens.log"
@@ -168,6 +168,7 @@ def check_whole_page(current_collection):
             # Buy skin & save log
             buy_skin(buy_now[idx])
             buy_log(current_collection, item_name, item_float, price_text_num[idx])
+            print("Total de itens comprados desta colecao: " + str(max_price_and_float[2] + 1))
 
         # Search for next page
         if not find_next_page() or max_price_reached:
