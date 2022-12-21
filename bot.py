@@ -24,24 +24,39 @@ def check_user_balance():
     user_balance_edit = (''.join(c for c in user_balance.text if c.isdigit()))
     return user_balance_edit
 
-def count_itens_by_collection(collection):
-    count = 0
+def get_possible_price_and_float(collection):
+    max_price = float(collection['maxPrice'])
+    max_float = float(collection['maxFloat'])
     
     log_file_path = "purchased_itens.log"
     if os.path.isfile(log_file_path):
+        filtered_log_file = []
         log_file = open(log_file_path, "r")
         log_file_lines = log_file.readlines()
+        
         for line in log_file_lines:
             split_result = line.split("<>")
-            date_str = str(split_result[0].strip())
             collection_name = str(split_result[1].strip().replace("Collection: ", ""))
-            item_name = str(split_result[2].strip().replace("Item: ", ""))
-            item_float = float(split_result[3].strip().replace("Float: ", ""))
-            item_price = float(split_result[4].strip().replace("Price: ", ""))
             if (collection_name == collection["name"]):
-                count += 1
-            
-    return str(count)
+                filtered_log_file.append(line)
+                
+        if filtered_log_file.count() > 0:
+            current_contract_purchased_itens = filtered_log_file.count() % 10
+            first_index = filtered_log_file.count() - current_contract_purchased_itens
+            current_contract_itens = filtered_log_file[first_index:filtered_log_file.count()]
+            float_sum = float(0)
+            price_sum = float(0)
+            for line in current_contract_itens:
+                split_result = line.split("<>")
+                float_sum += float(split_result[3].strip().replace("Float: ", ""))
+                price_sum += float(split_result[4].strip().replace("Price: ", ""))
+            avg_float = float_sum / current_contract_itens.count()
+            avg_price = price_sum / current_contract_itens.count()
+            diff_float = max_float - avg_float
+            diff_price = max_price - avg_price
+            return [max_price + diff_price, max_float + diff_float]
+
+    return [max_price, max_float]
 
 def buy_log(current_collection, item_name, item_float, item_price):
     log_file_path = "purchased_itens.log"
@@ -118,8 +133,11 @@ def check_whole_page(current_collection):
             break
 
         for idx, btn in enumerate(buttons):
+            # Get possible max price and max float
+            max_price_and_float = get_possible_price_and_float(current_collection)
+            
             # Check if max price is reached
-            if not check_max_price(idx, price_text_num, current_collection['maxPrice']):
+            if not check_max_price(idx, price_text_num, max_price_and_float[0]):
                 max_price_reached = True
                 break
 
@@ -144,13 +162,12 @@ def check_whole_page(current_collection):
                 continue
 
             # Check if float and pattern match with user input
-            if check_item_parameters(item_float, whole_json, current_collection['maxFloat']) is False:
+            if check_item_parameters(item_float, whole_json, max_price_and_float[1]) is False:
                 continue
 
             # Buy skin & save log
             buy_skin(buy_now[idx])
             buy_log(current_collection, item_name, item_float, price_text_num[idx])
-            print("Itens comprados nessa colecao: " + count_itens_by_collection(current_collection))
 
         # Search for next page
         if not find_next_page() or max_price_reached:
