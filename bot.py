@@ -52,9 +52,17 @@ def get_possible_price_and_float(collection):
                 price_sum += float(split_result[4].strip().replace("Price: ", ""))
             avg_float = float_sum / current_contract_itens.count()
             avg_price = price_sum / current_contract_itens.count()
+            
             diff_float = max_float - avg_float
             diff_price = max_price - avg_price
-            return [max_price + diff_price, max_float + diff_float, filtered_log_file.count()]
+            
+            possible_max_float = max_float + diff_float
+            possible_max_price = max_price + diff_price
+            
+            print("Float AVG: " + str(avg_float) + " - Max: " + str(max_float) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_float))
+            print("Preco AVG: " + str(avg_price) + " - Max: " + str(diff_price) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_price))
+            
+            return [possible_max_price, possible_max_float, filtered_log_file.count()]
 
     return [max_price, max_float, 0]
 
