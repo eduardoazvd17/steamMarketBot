@@ -47,30 +47,31 @@ def get_possible_price_and_float(collection):
             current_contract_purchased_itens = filtered_log_file_size % 10
             first_index = filtered_log_file_size - current_contract_purchased_itens
             current_contract_itens = filtered_log_file[first_index:filtered_log_file_size]
-            float_sum = float(0)
-            price_sum = float(0)
             
-            for line in current_contract_itens:
-                split_result = line.split("<>")
-                float_sum += float(split_result[3].strip().replace("Float: ", ""))
-                price_sum += float(split_result[4].strip().replace("Price: ", ""))
-            current_contract_itens_size = len(current_contract_itens)    
-            
-            # AVG
-            avg_float = float_sum / current_contract_itens_size
-            avg_price = price_sum / current_contract_itens_size
-            # Diff
-            diff_float = max_float - avg_float
-            diff_price = max_price - avg_price
-            # Max margin
-            possible_max_float = max_float + diff_float
-            possible_max_price = max_price + diff_price
-            
-            print("Colecao: " + str(collection['name']) + " - Total itens: " + str(filtered_log_file_size) + " - Itens contrato atual: " + str(current_contract_itens_size))
-            print("Float AVG: " + str(avg_float) + " - Max: " + str(max_float) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_float))
-            print("Preco AVG: " + str(avg_price) + " - Max: " + str(max_price) + " - Diff: " + str(diff_price) + " - Margem max atual: " + str(possible_max_price))
-            
-            return [possible_max_price, possible_max_float]
+            if current_contract_purchased_itens > 0:
+                float_sum = float(0)
+                price_sum = float(0)
+                for line in current_contract_itens:
+                    split_result = line.split("<>")
+                    float_sum += float(split_result[3].strip().replace("Float: ", ""))
+                    price_sum += float(split_result[4].strip().replace("Price: ", ""))
+                current_contract_itens_size = len(current_contract_itens)    
+                
+                # AVG
+                avg_float = float_sum / current_contract_itens_size
+                avg_price = price_sum / current_contract_itens_size
+                # Diff
+                diff_float = max_float - avg_float
+                diff_price = max_price - avg_price
+                # Max margin
+                possible_max_float = max_float + diff_float
+                possible_max_price = max_price + diff_price
+                
+                print("Colecao: " + str(collection['name']) + " - Total itens: " + str(filtered_log_file_size) + " - Itens contrato atual: " + str(current_contract_itens_size))
+                print("Float AVG: " + str(avg_float) + " - Max: " + str(max_float) + " - Diff: " + str(diff_float) + " - Margem max atual: " + str(possible_max_float))
+                print("Preco AVG: " + str(avg_price) + " - Max: " + str(max_price) + " - Diff: " + str(diff_price) + " - Margem max atual: " + str(possible_max_price))
+                
+                return [possible_max_price, possible_max_float]
 
     return [max_price, max_float]
 
