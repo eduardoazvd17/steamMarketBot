@@ -122,10 +122,10 @@ def buy_skin(buy_button):
         close_button = driver.find_element("id", "market_buynow_dialog_close")
         driver.execute_script("arguments[0].click();", close_button)
 
-        time.sleep(2)
+        time.sleep(5)
         confirmation_text = driver.find_element(
             "class name", "market_listing_purchase_message")
-        time.sleep(3)
+        time.sleep(5)
 
         return confirmation_text.text.startswith("You purchased this")
     except NoSuchElementException:
@@ -214,7 +214,7 @@ def check_whole_page(current_collection):
 
             # Buy skin & save log
             buy_result = buy_skin(buy_now[idx])
-            if buy_result:
+            if bool(buy_result):
                 buy_log(current_collection, item_name,
                         item_float, price_text_num[idx])
 
