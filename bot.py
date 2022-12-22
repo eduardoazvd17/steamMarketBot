@@ -127,7 +127,7 @@ def buy_skin(buy_button):
             "class name", "market_listing_purchase_message")
         time.sleep(5)
 
-        return confirmation_text.text.startswith("You purchased this")
+        return bool(confirmation_text.text.startswith("You purchased this"))
     except NoSuchElementException:
         print("Erro ao comprar essa skin, pulando para a proxima.")
         return False
