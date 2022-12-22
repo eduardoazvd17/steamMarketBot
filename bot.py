@@ -120,6 +120,8 @@ def buy_skin(buy_button):
         time.sleep(2)
         buy_button = driver.find_element("id", "market_buynow_dialog_purchase")
         driver.execute_script("arguments[0].click();", buy_button)
+        driver.execute_script("arguments[0].click();", check_box)
+        driver.execute_script("arguments[0].click();", buy_button)
 
         time.sleep(2)
         close_button = driver.find_element("id", "market_buynow_dialog_close")
