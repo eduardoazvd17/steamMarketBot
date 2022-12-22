@@ -112,21 +112,24 @@ def buy_skin(buy_button):
     driver.execute_script("arguments[0].click();", buy_button)
     # Execute order
     try:
+        time.sleep(2)
         check_box = driver.find_element(
             "id", "market_buynow_dialog_accept_ssa")
         driver.execute_script("arguments[0].click();", check_box)
 
+        time.sleep(2)
         buy_button = driver.find_element("id", "market_buynow_dialog_purchase")
         driver.execute_script("arguments[0].click();", buy_button)
 
+        time.sleep(2)
         close_button = driver.find_element("id", "market_buynow_dialog_close")
         driver.execute_script("arguments[0].click();", close_button)
 
-        time.sleep(5)
+        time.sleep(2)
         confirmation_text = driver.find_element(
             "class name", "market_listing_purchase_message")
-        time.sleep(5)
 
+        time.sleep(2)
         return bool(confirmation_text.text.startswith("You purchased this"))
     except NoSuchElementException:
         print("Erro ao comprar essa skin, pulando para a proxima.")
